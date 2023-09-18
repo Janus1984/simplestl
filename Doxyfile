@@ -1,0 +1,29 @@
+# 配置文件示例
+
+# 指定项目名称
+PROJECT_NAME = Simplestl
+
+# 指定输入文件或目录
+# 可以使用相对或绝对路径
+INPUT = src/
+
+# 指定生成文档的输出目录
+OUTPUT_DIRECTORY = docs
+
+# 选择要生成的文档类型
+GENERATE_HTML = YES
+GENERATE_LATEX = NO
+
+# 设定是否提取所有成员，包括私有成员
+EXTRACT_ALL = YES
+
+# 指定要排除的目录或文件
+EXCLUDE = unit_test.cpp
+
+# 指定要包含的文件类型
+FILE_PATTERNS = *.cpp *.h
+
+# 指定要忽略的特定文件或目录
+EXCLUDE_PATTERNS = */test/* */build/*
+
+# 配置其他选项...

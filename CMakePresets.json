@@ -1,0 +1,90 @@
+{
+    "version": 6,
+    "configurePresets": [
+        {
+            "name": "base",
+            "displayName": "Configure preset using toolchain file",
+            "hidden": true,
+            "description": "Sets Ninja generator, build and install directory",
+            "generator": "Ninja",
+            "binaryDir": "${sourceDir}/build/${presetName}",
+            "toolchainFile": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release",
+                "CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
+                "CMAKE_TOOLCHAIN_FILE": "",
+                "CMAKE_INSTALL_PREFIX": "${sourceDir}/install/${presetName}"
+            }
+        },
+        {
+            "name": "Debug",
+            "displayName": "Debug",
+            "description": "Sets debug build type and x64 arch",
+            "inherits": "base",
+            "architecture": {
+                "value": "x64",
+                "strategy": "external"
+            },
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug"
+            }
+        },
+        {
+            "name": "Release",
+            "displayName": "Release",
+            "description": "Sets release build type and x64 arch",
+            "inherits": "base",
+            "architecture": {
+                "value": "x64",
+                "strategy": "external"
+            },
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release"
+            }
+        },
+        {
+            "name": "RelWithDebInfo",
+            "displayName": "RelWithDebInfo",
+            "description": "Sets RelWithDebInfo build type and x64 arch",
+            "inherits": "base",
+            "architecture": {
+                "value": "x64",
+                "strategy": "external"
+            },
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "RelWithDebInfo"
+            }
+        }
+    ],
+    "buildPresets": [
+        {
+            "name": "Debug",
+            "displayName": "Debug",
+            "configurePreset": "Debug"
+        },
+        {
+            "name": "Release",
+            "displayName": "Release",
+            "configurePreset": "Release",
+            "nativeToolOptions": []
+        }
+    ],
+    "testPresets": [
+        {
+            "name": "Debug",
+            "description": "Enable output on failure",
+            "configurePreset": "Debug",
+            "output": {
+                "outputOnFailure": true
+            }
+        },
+        {
+            "name": "Release",
+            "description": "Enable output on failure",
+            "configurePreset": "Release",
+            "output": {
+                "outputOnFailure": true
+            }
+        }
+    ]
+}
