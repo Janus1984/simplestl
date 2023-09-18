@@ -5,7 +5,7 @@ PROJECT_NAME = Simplestl
 
 # 指定输入文件或目录
 # 可以使用相对或绝对路径
-INPUT = src/
+INPUT = src
 
 # 指定生成文档的输出目录
 OUTPUT_DIRECTORY = docs
