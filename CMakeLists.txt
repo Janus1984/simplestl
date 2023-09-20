@@ -19,7 +19,7 @@ project(XXX LANGUAGES CXX)
 
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_CURRENT_LIST_DIR}/cmake")
 
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/src)
+include_directories(${PROJECT_SOURCE_DIR}/src)
 
 add_library(ncnn_stl STATIC src/simplestl.cpp)
 
@@ -28,9 +28,9 @@ target_link_libraries(main PUBLIC ncnn_stl)
 
 enable_testing()
 
-add_executable(unit_test test/unit_test.cpp)
+add_executable(test_main test/unit_test.cpp)
 find_package(GTest CONFIG REQUIRED)
-target_link_libraries(unit_test PRIVATE GTest::gtest GTest::gtest_main GTest::gmock GTest::gmock_main)
-target_link_libraries(unit_test PRIVATE ncnn_stl)
+target_link_libraries(test_main PRIVATE GTest::gtest GTest::gtest_main GTest::gmock GTest::gmock_main)
+target_link_libraries(test_main PRIVATE ncnn_stl)
 
-add_test(AllTestsInMain unit_test)
+add_test(AllTestsInMain test_main)
